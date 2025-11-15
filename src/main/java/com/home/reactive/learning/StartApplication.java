@@ -1,0 +1,20 @@
+package com.home.reactive.learning;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+@Slf4j
+public class StartApplication {
+
+    public static void main(String[] args) {
+        log.info("hi");
+
+        log.info("hi");
+
+        log.info("hi");
+        SpringApplication.run(StartApplication.class, args);
+    }
+
+}
