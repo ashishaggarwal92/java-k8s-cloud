@@ -5,7 +5,7 @@ Index:
 - Why Rancher
 
 
-[MONO](src/main/learning/2_mono_flux/1_Docker.md)
+[MONO](src/main/learning/2_Docker/1_Docker.md)
 - Creating MONO
 - log()
 - error()
@@ -16,7 +16,7 @@ Index:
 - concatWith()
 - delayElement()
 
-3) [FLUX](./src/main/learning/2_mono_flux/2_flux.md)
+3) [FLUX](src/main/learning/2_Docker/2_flux.md)
 - Creating Flux
 - map() / flatMap()/ flatMapMany()
 - filter()
