@@ -35,5 +35,8 @@ kubectl get deployment
 kubectl delete deployment nginx-test
 
 
+# secrets
+kubectl get secrets
+
 
 

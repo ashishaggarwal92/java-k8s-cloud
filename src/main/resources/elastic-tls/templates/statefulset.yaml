@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: elastic
+spec:
+  replicas: {{ .Values.replicas }}
+  serviceName: elastic
+  selector:
+    matchLabels:
+      app: elastic
+  template:
+    metadata:
+      labels:
+        app: elastic
+    spec:
+      containers:
+        - name: elasticsearch
+          image: {{ .Values.image }}
+          env:
+            - name: ES_JAVA_OPTS
+              value: "-Xms1g -Xmx1g"
+            - name: node.name
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+
+          volumeMounts:
+            - name: es-config
+              mountPath: /usr/share/elasticsearch/config/elasticsearch.yml
+              subPath: elasticsearch.yml
+
+            - name: es-ca
+              mountPath: /usr/share/elasticsearch/config/certs/ca
+
+            - name: es-http
+              mountPath: /usr/share/elasticsearch/config/certs/http
+
+            - name: es-transport
+              mountPath: /usr/share/elasticsearch/config/certs/transport
+
+      volumes:
+        - name: es-config
+          configMap:
+            name: elastic-config
+
+        - name: es-ca
+          secret:
+            secretName: {{ .Values.caSecret }}
+
+        - name: es-http
+          secret:
+            secretName: {{ .Values.httpSecret }}
+
+        - name: es-transport
+          secret:
+            secretName: {{ .Values.transportSecret }}

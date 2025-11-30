@@ -1,0 +1,14 @@
+instances:
+  - name: es-transport
+    dns:
+      - elastic-0
+      - elastic-0.elastic
+      - elastic-0.elastic.default.svc
+      - elastic-1
+      - elastic-1.elastic
+      - elastic-1.elastic.default.svc
+      - elastic
+      - elastic.default.svc
+      - localhost
+    ip:
+      - 127.0.0.1

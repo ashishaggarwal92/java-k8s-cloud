@@ -1,0 +1,12 @@
+apiVersion: v2
+name: elastic-tls
+description: A Helm chart for a 2-node Elasticsearch cluster with shared TLS certificates
+type: application
+version: 1.0.0
+appVersion: "8.17.0"
+
+keywords:
+  - elasticsearch
+  - tls
+  - security
+  - kubernetes

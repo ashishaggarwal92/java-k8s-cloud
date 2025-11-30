@@ -1,0 +1,11 @@
+instances:
+  - name: es-elasticsearch-0
+    dns:
+      - es-elasticsearch-0
+      - es-elasticsearch-0.es-elasticsearch.default.svc
+      - es-elasticsearch
+  - name: es-elasticsearch-1
+    dns:
+      - es-elasticsearch-1
+      - es-elasticsearch-1.es-elasticsearch.default.svc
+      - es-elasticsearch
