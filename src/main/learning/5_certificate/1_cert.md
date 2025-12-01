@@ -4,6 +4,11 @@
 
 ### We need below certificates
 
+1) ca cert
+2) http certificate for elastic search http layer
+3) transport cert for ES node-to-node 
+4) Client cert Spring boot to ES
+
 #### A. Certificate Authority (CA)
 
 ca.crt

@@ -19,10 +19,22 @@ helm list -n default
 
 kubectl get all -n default
 
-### Check if STATEFULSET exists
+
+
+## Verify all resources
+
+kubectl get pods -l app=elastic
+
+
 
 
 
 ##Uninstall helm
 helm uninstall elastic
+
+# Connect cluster using 9200
+
+1) kubectl exec -it elastic-0 -- curl -k https://localhost:9200
+   Check if security is enabled . This will give error
+
 
