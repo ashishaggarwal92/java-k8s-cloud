@@ -30,6 +30,21 @@ kubectl exec -it elastic-0 -- /bin/sh
 curl --cacert ./config/certs/ca/ca.crt --cert ./config/certs/http/tls.crt --key ./config/certs/http/tls.key -u elastic:changeme https://elastic:9200/_cluster/health?pretty
 
 
+# Test using java app
+
+## 1- copy cluster ca.crt in to local
+
+kubectl exec elastic-0 -- cp /usr/share/elasticsearch/config/certs/ca/..data/ca.crt /tmp/ca.crt
+
+kubectl cp elastic-0:/tmp/ca.crt src/main/resources/ca.crt
+
+## 2- port forwad for local intellij + postman
+
+kubectl port-forward svc/elastic 9200:9200
+
+## 3- ignore host name verifier in restclient
+
+
 
 ## Uninstall helm
 helm uninstall elastic
@@ -37,7 +52,7 @@ helm uninstall elastic
 
 
 
-### CLeanup
+### Cleanup
 
 kubectl delete secret es-ca es-http es-transport
 
