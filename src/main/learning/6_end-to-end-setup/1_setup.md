@@ -19,22 +19,35 @@ helm list -n default
 
 kubectl get all -n default
 
-
-
 ## Verify all resources
 
 kubectl get pods -l app=elastic
 
+## login to pod
+kubectl exec -it elastic-0 -- /bin/sh
+
+## check cluster health
+curl --cacert ./config/certs/ca/ca.crt --cert ./config/certs/http/tls.crt --key ./config/certs/http/tls.key -u elastic:changeme https://elastic:9200/_cluster/health?pretty
 
 
 
-
-##Uninstall helm
+## Uninstall helm
 helm uninstall elastic
 
-# Connect cluster using 9200
 
-1) kubectl exec -it elastic-0 -- curl -k https://localhost:9200
-   Check if security is enabled . This will give error
+
+
+### CLeanup
+
+kubectl delete secret es-ca es-http es-transport
+
+kubectl delete pods elastic-0 elastic-1
+
+kubectl delete statefulset elastic
+
+kubectl delete service elastic
+
+
+helm uninstall elastic
 
 

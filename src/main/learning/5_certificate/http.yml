@@ -1,7 +1,7 @@
 instances:
   - name: http
     dns:
-      - es-elasticsearch
-      - es-elasticsearch.default.svc
-      - es-elasticsearch.default.svc.cluster.local
-      - "*.es-elasticsearch.default.svc"
+      - elastic
+      - elastic.default.svc
+      - elastic.default.svc.cluster.local
+      - "*.elastic.default.svc"

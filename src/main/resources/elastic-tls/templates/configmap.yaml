@@ -4,7 +4,7 @@ metadata:
   name: elastic-config
 data:
   elasticsearch.yml: |
-    cluster.name: elastic-tls
+    cluster.name: es-cluster
     network.host: 0.0.0.0
     node.name: ${HOSTNAME}
 

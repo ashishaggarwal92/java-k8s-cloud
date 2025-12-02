@@ -19,10 +19,12 @@ spec:
           env:
             - name: ES_JAVA_OPTS
               value: "-Xms1g -Xmx1g"
-            - name: node.name
+            - name: POD_NAME
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
+            - name: ELASTIC_PASSWORD
+              value: "changeme"
 
           volumeMounts:
             - name: es-config
