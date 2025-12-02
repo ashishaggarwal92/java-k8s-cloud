@@ -30,7 +30,7 @@ kubectl exec -it elastic-0 -- /bin/sh
 curl --cacert ./config/certs/ca/ca.crt --cert ./config/certs/http/tls.crt --key ./config/certs/http/tls.key -u elastic:changeme https://elastic:9200/_cluster/health?pretty
 
 
-# Test using java app
+# Test using java app local
 
 ## 1- copy cluster ca.crt in to local
 
@@ -44,7 +44,12 @@ kubectl port-forward svc/elastic 9200:9200
 
 ## 3- ignore host name verifier in restclient
 
+# test using java app docker image on cluster
 
+## clean inatall
+## docker build -t my-spring-app:latest .
+## kubectl apply -f k8s/spring-app-deployment.yaml
+## kubectl apply -f k8s/spring-app-service.yaml
 
 ## Uninstall helm
 helm uninstall elastic
