@@ -11,6 +11,8 @@
 
 helm install elastic ./elastic-tls
 
+-- we should have only one service in elastic-tls folder. I have added 2 for different purpose
+
 ## verify the helm
 
 ### Check what Helm actually installed
@@ -38,18 +40,19 @@ kubectl exec elastic-0 -- cp /usr/share/elasticsearch/config/certs/ca/..data/ca.
 
 kubectl cp elastic-0:/tmp/ca.crt src/main/resources/ca.crt
 
-## 2- port forwad for local intellij + postman
 
-kubectl port-forward svc/elastic 9200:9200
+## Test using java app docker image on cluster
 
-## 3- ignore host name verifier in restclient
+### clean install
+### docker build -t my-spring-app:latest .
+### kubectl apply -f k8s/spring-app-deployment.yaml
+### kubectl apply -f k8s/spring-app-service.yaml
 
-# test using java app docker image on cluster
+## Login to spring app pod
 
-## clean inatall
-## docker build -t my-spring-app:latest .
-## kubectl apply -f k8s/spring-app-deployment.yaml
-## kubectl apply -f k8s/spring-app-service.yaml
+- kubectl exec -it spring-app -- /bin/sh
+- curl http:/elastic:8080/es/health
+
 
 ## Uninstall helm
 helm uninstall elastic

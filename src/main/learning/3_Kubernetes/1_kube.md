@@ -1,6 +1,6 @@
 # Kubernetes
 
-1) Open Rnacher desktop
+1) Open Rancher desktop
 2) Enable Kubernetes
 3) Run Below commands:
 
